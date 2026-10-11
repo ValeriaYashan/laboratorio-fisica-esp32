@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laboratorio de física de bolsillo</title>
+<style>
+  :root { --fondo:#ffffff; --texto:#2C2C2A; --suave:#5F5E5A; --linea:#D3D1C7; --tarjeta:#F1EFE8; }
+  @media (prefers-color-scheme: dark) {
+    :root { --fondo:#1f1f1e; --texto:#F1EFE8; --suave:#B4B2A9; --linea:#444441; --tarjeta:#2C2C2A; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: system-ui, sans-serif; background:var(--fondo); color:var(--texto); line-height:1.5; }
+  main { max-width: 960px; margin: 0 auto; padding: 16px; }
+  h1 { font-size: 22px; font-weight: 500; margin: 0 0 4px; }
+  h2 { font-size: 16px; font-weight: 500; margin: 20px 0 8px; }
+  p { margin: 0 0 12px; color: var(--suave); }
+  .barra { display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin: 12px 0; }
+  button, select, input { font: inherit; padding: 6px 10px; border:1px solid var(--linea); border-radius:8px; background:var(--tarjeta); color:var(--texto); }
+  button { cursor:pointer; }
+  input[type=checkbox], input[type=radio] { padding:0; }
+  input[type=number], input[type=text] { width: 90px; }
+  canvas { width:100%; height:340px; display:block; background:var(--tarjeta); border-radius:12px; }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  th, td { text-align:left; padding:6px 8px; border-bottom:1px solid var(--linea); }
+  #mensaje { color: var(--suave); min-height: 1.5em; }
+</style>
+</head>
+<body>
+<main>
+  <div class="barra" style="justify-content:space-between">
+    <div>
+      <h1 data-t="titulo"></h1>
+      <p data-t="subtitulo"></p>
+    </div>
+    <select id="idioma" aria-label="Idioma / Language">
+      <option value="es">Español</option>
+      <option value="en">English</option>
+    </select>
+  </div>
+
+  <div class="barra">
+    <label><span data-t="cargar"></span> <input id="archivo" type="file" accept=".csv,text/csv"></label>
+    <button id="btn-pendulo" type="button" data-t="pendulo"></button>
+    <button id="btn-viga" type="button" data-t="viga"></button>
+  </div>
+  <p id="mensaje" role="status"></p>
+
+  <div class="barra">
+    <span data-t="grupo"></span>
+    <label><input type="radio" name="grupo" value="acel" checked> <span data-t="acel"></span></label>
+    <label><input type="radio" name="grupo" value="giro"> <span data-t="giro"></span></label>
+    <span data-t="canales"></span>
+    <span id="canales" class="barra" style="margin:0"></span>
+  </div>
+
+  <canvas id="grafico" aria-label="Grafico"></canvas>
+
+  <h2 data-t="estadisticas"></h2>
+  <table><tbody id="tabla"></tbody></table>
+  <div class="barra">
+    <label><span data-t="largo"></span> <input id="largo" type="text" value="0.6" inputmode="decimal"></label>
+    <span id="pendulo-g"></span>
+  </div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

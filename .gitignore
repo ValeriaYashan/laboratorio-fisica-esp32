@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.pio/
+.vscode/
+prueba_conversiones
+# Tus propias mediciones (los ejemplos simulados de datos/ejemplo si se suben)
+datos/mis_datos/
+*.stl
+.DS_Store
+Thumbs.db
